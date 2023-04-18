@@ -1,0 +1,35 @@
+!!! WARNING !!!
+READ ALL THE FOLLOWING WARINGS BEFORE PROCEED WITH INSTALL !!!
+
+!!! WARNING !!! 
+Use this version of gnuworld at your own risk, this is used by smaller communities, it is not so well tested like the official gnuworld, therefore easily could be found bugs!
+
+!!! WARNING !!!
+DO NOT use older versions, which comes from circulation from "hand-to hand" those represents a higher risk of containing critical bugs, always use the latest version. There are a few basic steps to get correctly the latest version:
+1. Install git:
+sudo apt-get install git
+2. Get the latest 'gnuworld-enhanced'
+git clone https://github.com/Seven-7/gnuworld-enhanced.git
+3. Install it in the usual way:
+cd gnuworld-enhanced
+./configure ........
+make && make instal, etc etc
+4. Keep your code updated, periodically, and/or check for any new commits on github:
+git pull
+5. Rebuild and restart gnuworld
+make && make install
+restart gnu ...
+
+!!! WARNING !!!
+Official gnuworld database and gnuworld-enhanced databases are not compatible! Once you installed one version doesn't work to change your mind and use an existing database with the other gnuworld! Only advanced users could attempt a migration, but it's probably not the case for major usual users!
+If you want to switch between gnuworld-enhanced and gnuworld official you must recreate all the databases!!
+
+!!! WARNING !!!
+Don't run the original official TheJudge crontab scripts with this version of gnuworld! This version handles internally the channel registration process, the crontabs scripts interfere with it in an unpredictable, not wanted way!
+
+!!! WARNING !!!
+The Judge settings must be kept in synchron MANUALLY in BOTH gnuworld's cservice.conf as also in website configs!
+Do not expect the website settings will be applied to the gnuworld too!
+
+!!! WARNING !!!
+gnuworld-enhanced is an UNOFFICIAL gnuworld, do not ask for support on Undernet #coder-com, but instead you can ask on #GNUWorld
