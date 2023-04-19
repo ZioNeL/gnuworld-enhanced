@@ -504,6 +504,7 @@ if (flagNoTake)
 else
 	newBan->setSetBy(theUser->getUserName());
 newBan->setSetTS(bot->currentTime());
+newBan->setLevel(banLevel);
 //Leave 0 to 0, meaning a permanent ban.
 if (banTime > 0)
         banTime = banTime + bot->currentTime();
