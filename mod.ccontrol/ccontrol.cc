@@ -2333,7 +2333,7 @@ theQuery	<< Main
 		<< Oper->getAccess() << ","
 		<< Oper->getSAccess() << ",'"
 		<< removeSqlChars(Oper->getLast_Updated_by())
-		<< "',now()::abstime::int4,"
+		<< "',date_part('epoch', CURRENT_TIMESTAMP)::int,"
 		<< Oper->getFlags() << ",'"
 		<< removeSqlChars(Oper->getServer()) 
 		<< "' ," 
@@ -2351,7 +2351,7 @@ theQuery	<< Main
 		<< "," << (Oper->getNeedOp() ? "'t'" : "'n'")
 		<< "," << (Oper->getNotice() ? "'t'" : "'n'")
 		<< "," << (Oper->getLag() ? "'t'" : "'n'")
-		<< ",now()::abstime::int4"
+		<< ",date_part('epoch', CURRENT_TIMESTAMP)::int"
 		<< ")"
 		<< ends;
 
@@ -3158,7 +3158,7 @@ if( NULL == targetServer )
 	}
 
 buffer[ 512 ] = 0 ;
-static const char *Main = "INSERT INTO comlog (ts,oper,command) VALUES (now()::abstime::int4,'";
+static const char *Main = "INSERT INTO comlog (ts,oper,command) VALUES (date_part('epoch', CURRENT_TIMESTAMP)::int,'";
 StringTokenizer st(buffer);
 commandIterator tCommand = findCommand((string_upper(st[0])));
 string log;
@@ -3263,7 +3263,7 @@ va_start( list, Log ) ;
 vsprintf( buffer, Log, list ) ;
 va_end( list ) ;
 buffer[512]= '\0';
-static const char *Main = "INSERT INTO comlog (ts,oper,command) VALUES (now()::abstime::int4,'";
+static const char *Main = "INSERT INTO comlog (ts,oper,command) VALUES (date_part('epoch', CURRENT_TIMESTAMP)::int,'";
 StringTokenizer st(buffer);
 commandIterator tCommand = findCommand((string_upper(st[0])));
 string log;
@@ -3864,7 +3864,7 @@ for(;curUser != usersMap.end();++curUser)
 		}
 	}
 
-static const char *DelMain = "UPDATE opers SET isSuspended = 'n',Suspend_Expires = 0, Suspended_by = '',suspend_level = 0,suspend_reason='' WHERE IsSuspended = 'y' AND suspend_expires < now()::abstime::int4";
+static const char *DelMain = "UPDATE opers SET isSuspended = 'n',Suspend_Expires = 0, Suspended_by = '',suspend_level = 0,suspend_reason='' WHERE IsSuspended = 'y' AND suspend_expires < date_part('epoch', CURRENT_TIMESTAMP)::int";
 
 stringstream DelQuery;
 DelQuery	<< DelMain
@@ -4028,7 +4028,7 @@ return true;
 
 bool ccontrol::loadGlines()
 {
-//static const char *Main = "SELECT * FROM glines WHERE ExpiresAt > now()::abstime::int4";
+//static const char *Main = "SELECT * FROM glines WHERE ExpiresAt > date_part('epoch', CURRENT_TIMESTAMP)::int";
 
 if(!dbConnected)
 	{
