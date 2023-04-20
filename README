@@ -9,7 +9,7 @@ DO NOT use older versions, which comes from circulation from "hand-to hand" thos
 1. Install git:
 sudo apt-get install git
 2. Get the latest 'gnuworld-enhanced'
-git clone https://github.com/Seven-7/gnuworld-enhanced.git
+git clone https://github.com/ZioNeL/gnuworld-enhanced.git
 3. Install it in the usual way:
 cd gnuworld-enhanced
 ./configure ........

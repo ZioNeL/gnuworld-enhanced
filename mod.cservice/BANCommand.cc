@@ -253,10 +253,10 @@ if(banLevel < 1 || banLevel > level || 500 < banLevel)
 		(500 < level) ? 500 : level);
 	return true;
 	}
-
-if(banTime < 300 || banTime > bot->getConfigVar("MAX_BAN_DURATION")->asInt())
+	
+if ((banTime < 0) || ((banTime < 300) && (banTime > 0)) || banTime > bot->getConfigVar("MAX_BAN_DURATION")->asInt())
 	{
-	int maxbanhours = (bot->getConfigVar("MAX_BAN_DURATION")->asInt() / 3600);
+        int maxbanhours = (bot->getConfigVar("MAX_BAN_DURATION")->asInt() / 86400);
 	bot->Notice(theClient,
 		bot->getResponse(theUser,
 		language::ban_duration).c_str(),
@@ -266,7 +266,7 @@ if(banTime < 300 || banTime > bot->getConfigVar("MAX_BAN_DURATION")->asInt())
 	}
 
 // TODO: Violation of the rule of numbers
-if(banReason.size() > 128)
+if(banReason.size() > 300)
 	{
 	bot->Notice(theClient,
 		bot->getResponse(theUser,
@@ -505,7 +505,10 @@ else
 	newBan->setSetBy(theUser->getUserName());
 newBan->setSetTS(bot->currentTime());
 newBan->setLevel(banLevel);
-newBan->setExpires(banTime+bot->currentTime());
+//Leave 0 to 0, meaning a permanent ban.
+if (banTime > 0)
+        banTime = banTime + bot->currentTime();
+newBan->setExpires(banTime);
 newBan->setReason(banReason);
 
 vector< iClient* > clientsToKick ;
