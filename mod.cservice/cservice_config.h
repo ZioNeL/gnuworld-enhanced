@@ -60,7 +60,7 @@
  * Do you want NEWPASS command or not?
  */
 
-#define USE_NEWPASS
+#undef USE_NEWPASS
 
 /**
  * Do you want to use the Noteserv functionality?
@@ -113,18 +113,18 @@
 /**
  * Define this if you want to enable the HELLO command.
  */
-#define ALLOW_HELLO
+#undef ALLOW_HELLO
 
 /**
  * Define this if you want users to use HELLO command.
  */
-#define ALLOW_USERS_HELLO
+#undef ALLOW_USERS_HELLO
 
 /**
  * Define this if you want users to start channel registration process on IRC.
  * If it's disabled they are redirected to use website registration.
  */
-#define ALLOW_IRC_CHANREG
+#undef ALLOW_IRC_CHANREG
 
 /**
  * Define this if you want to enable the WELCOME feature.
