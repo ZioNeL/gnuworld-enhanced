@@ -49,7 +49,7 @@ pgsqlDB::pgsqlDB( const string& dbHost,
 	const unsigned short int dbPort,
 	const string& dbName,
 	const string& userName,
-	const string& password ) throw( std::exception )
+	const string& password )
 : gnuworldDB( dbHost, dbPort, dbName, userName, password ),
   theDB( 0 ),
   lastResult( 0 )
@@ -86,7 +86,7 @@ if( !isConnected() )
 	}
 }
 
-pgsqlDB::pgsqlDB( const string& connectInfo ) throw( std::exception )
+pgsqlDB::pgsqlDB( const string& connectInfo )
 {
 // TODO
 // Allow exception to be thrown
